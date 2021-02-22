@@ -13516,7 +13516,7 @@ $$ g = mean(A_{g}) $$</li>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[29]:</div>
+<div class="prompt input_prompt">In&nbsp;[106]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">getCaption</span><span class="p">(</span><span class="n">fig_num</span><span class="p">,</span><span class="n">cap</span><span class="p">,</span><span class="n">sep</span><span class="o">=-</span><span class="mf">0.1</span><span class="p">):</span>
@@ -13622,7 +13622,7 @@ $$ g = mean(A_{g}) $$</li>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[107]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">signal</span>
@@ -14459,23 +14459,13 @@ $$f_{sr} = \frac{\text{# of events recorded}}{\text{time of trial (s)}} Hz$$<p>U
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="10-Hour-Data-Set-From-Mohammad's-Home-Activities">10 Hour Data Set From Mohammad's Home Activities<a class="anchor-link" href="#10-Hour-Data-Set-From-Mohammad's-Home-Activities">&#182;</a></h2><p>We have recorded a 10 hour data run using the new app. Mohammad acquired all this data while doing his every day activities at home.</p>
-<p><span style="color:blue"></p>
-<p>Plan:</p>
-<ul>
-<li>show plots of A</li>
-<li>implement fit</li>
-<li>give explanation of large in g</li>
-<li>explain calibration efforts</li>
-<li>report better values for g
-&lt;/span&gt;</li>
-</ul>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[103]:</div>
+<div class="prompt input_prompt">In&nbsp;[122]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df3</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;sensorlog_accel_20210214_151702.csv&quot;</span><span class="p">)</span>
@@ -14496,7 +14486,7 @@ $$f_{sr} = \frac{\text{# of events recorded}}{\text{time of trial (s)}} Hz$$<p>U
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[103]:</div>
+    <div class="prompt output_prompt">Out[122]:</div>
 
 
 
@@ -14617,7 +14607,7 @@ $$f_{sr} = \frac{\text{# of events recorded}}{\text{time of trial (s)}} Hz$$<p>U
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[123]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">time</span> <span class="o">=</span> <span class="n">df3</span><span class="o">.</span><span class="n">timestamp</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">df3</span><span class="o">.</span><span class="n">timestamp</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> 
@@ -14681,7 +14671,7 @@ $$f_{sr} = \frac{\text{# of events recorded}}{\text{time of trial (s)}} Hz$$<p>U
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[71]:</div>
+<div class="prompt input_prompt">In&nbsp;[125]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">df3</span><span class="o">.</span><span class="n">X</span><span class="o">.</span><span class="n">values</span>
@@ -14690,7 +14680,7 @@ $$f_{sr} = \frac{\text{# of events recorded}}{\text{time of trial (s)}} Hz$$<p>U
 
 <span class="n">sample_rate</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1">#Hz</span>
 <span class="n">cutoff_frequency</span> <span class="o">=</span> <span class="mf">0.1</span> 
-<span class="n">signal_lenght</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">signal_lenght</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">df3</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
 
 <span class="n">A_DCx</span><span class="p">,</span> <span class="n">diff_x</span> <span class="o">=</span> <span class="n">getFilteredData</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">cutoff_frequency</span><span class="p">,</span> <span class="n">sample_rate</span><span class="p">)</span>
 <span class="n">A_DCy</span><span class="p">,</span> <span class="n">diff_y</span> <span class="o">=</span> <span class="n">getFilteredData</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">cutoff_frequency</span><span class="p">,</span> <span class="n">sample_rate</span><span class="p">)</span>
@@ -14704,7 +14694,7 @@ $$f_{sr} = \frac{\text{# of events recorded}}{\text{time of trial (s)}} Hz$$<p>U
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[74]:</div>
+<div class="prompt input_prompt">In&nbsp;[126]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">A_g</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">A_DCx</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">A_DCy</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">A_DCz</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
@@ -14722,7 +14712,7 @@ $$f_{sr} = \frac{\text{# of events recorded}}{\text{time of trial (s)}} Hz$$<p>U
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[74]:</div>
+    <div class="prompt output_prompt">Out[126]:</div>
 
 
 
@@ -14739,7 +14729,7 @@ $$f_{sr} = \frac{\text{# of events recorded}}{\text{time of trial (s)}} Hz$$<p>U
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[76]:</div>
+<div class="prompt input_prompt">In&nbsp;[127]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">error</span> <span class="o">=</span> <span class="mi">100</span><span class="o">*</span><span class="p">((</span><span class="mf">9.81</span><span class="o">-</span><span class="n">g</span><span class="p">)</span><span class="o">/</span><span class="n">g</span><span class="p">)</span>
@@ -14756,7 +14746,7 @@ $$f_{sr} = \frac{\text{# of events recorded}}{\text{time of trial (s)}} Hz$$<p>U
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[76]:</div>
+    <div class="prompt output_prompt">Out[127]:</div>
 
 
 
@@ -15061,10 +15051,10 @@ Plan:</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[29]:</div>
+<div class="prompt input_prompt">In&nbsp;[27]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">analyzeData</span><span class="p">(</span><span class="n">time</span><span class="p">,</span><span class="n">val</span><span class="p">,</span><span class="n">df</span><span class="p">,</span><span class="n">sname</span><span class="p">,</span> <span class="n">samplingFrequency</span><span class="p">,</span> <span class="n">title</span><span class="p">):</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">analyzeData</span><span class="p">(</span><span class="n">time</span><span class="p">,</span><span class="n">val</span><span class="p">,</span><span class="n">df</span><span class="p">,</span><span class="n">sname</span><span class="p">,</span> <span class="n">samplingFrequency</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span><span class="n">lims</span><span class="o">=</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span><span class="kc">None</span><span class="p">]):</span>
     <span class="c1">#import data</span>
     <span class="n">data</span> <span class="o">=</span> <span class="n">df</span>
 
@@ -15087,9 +15077,11 @@ Plan:</p>
    <span class="c1"># showPlot()</span>
 
     <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">frequencies</span><span class="p">,</span> <span class="nb">abs</span><span class="p">(</span><span class="n">fourierTransform</span><span class="p">))</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Fourier transform depicting the frequency components (</span><span class="si">{}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">title</span><span class="p">))</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Frequency&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Fourier transform depicting the frequency components (</span><span class="si">{}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">title</span><span class="p">),</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Frequency&quot;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">13</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="n">sname</span> <span class="o">+</span> <span class="n">val</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="n">lims</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="n">lims</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 
@@ -15100,13 +15092,55 @@ Plan:</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="prompt input_prompt">In&nbsp;[150]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> qt
-<span class="n">analyzeData</span><span class="p">(</span><span class="s2">&quot;timestamp&quot;</span><span class="p">,</span><span class="s2">&quot;X&quot;</span><span class="p">,</span><span class="n">df5</span><span class="p">,</span><span class="s2">&quot;Accelaration in &quot;</span><span class="p">)</span>
-<span class="n">analyzeData</span><span class="p">(</span><span class="s2">&quot;timestamp&quot;</span><span class="p">,</span><span class="s2">&quot;Y&quot;</span><span class="p">,</span><span class="n">df5</span><span class="p">,</span><span class="s2">&quot;Accelaration in &quot;</span><span class="p">)</span>
-<span class="n">analyzeData</span><span class="p">(</span><span class="s2">&quot;timestamp&quot;</span><span class="p">,</span><span class="s2">&quot;Z&quot;</span><span class="p">,</span><span class="n">df5</span><span class="p">,</span><span class="s2">&quot;Accelaration in &quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">getFT</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">val</span> <span class="p">,</span><span class="n">df</span><span class="p">,</span> <span class="n">samplingFrequency</span><span class="p">):</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">df</span>
+    <span class="n">df_close</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">val</span><span class="p">]</span>
+    <span class="n">prices</span> <span class="o">=</span> <span class="n">df_close</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+    <span class="c1">#Fourier Transform</span>
+    <span class="n">amplitude</span> <span class="o">=</span> <span class="n">prices</span>
+    <span class="n">days</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">val</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+    <span class="n">samplingInterval</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">samplingFrequency</span>
+
+    <span class="n">fourierTransform</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fft</span><span class="p">(</span><span class="n">amplitude</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">amplitude</span><span class="p">)</span>           
+    <span class="n">fourierTransform</span> <span class="o">=</span> <span class="n">fourierTransform</span><span class="p">[</span><span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">amplitude</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">))]</span> 
+    <span class="n">tpCount</span>     <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">amplitude</span><span class="p">)</span>
+    <span class="n">values</span>      <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">tpCount</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span>
+    <span class="n">timePeriod</span>  <span class="o">=</span> <span class="n">tpCount</span><span class="o">/</span><span class="n">samplingFrequency</span>
+    <span class="n">frequencies</span> <span class="o">=</span> <span class="n">values</span><span class="o">/</span><span class="n">timePeriod</span>
+    <span class="k">return</span> <span class="n">frequencies</span><span class="p">,</span> <span class="n">fourierTransform</span>
+
+<span class="k">def</span> <span class="nf">getFTofA</span><span class="p">(</span><span class="n">time</span><span class="p">,</span><span class="n">vals</span><span class="p">,</span><span class="n">df</span><span class="p">,</span> <span class="n">sname</span><span class="p">,</span> <span class="n">samplingFrequency</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span><span class="n">fig_num</span><span class="p">,</span><span class="n">lims</span><span class="o">=</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span><span class="kc">None</span><span class="p">]):</span>
+    <span class="n">xval</span><span class="p">,</span> <span class="n">yval</span><span class="p">,</span> <span class="n">zval</span> <span class="o">=</span> <span class="n">vals</span>
+    <span class="n">xf</span><span class="p">,</span> <span class="n">xfT</span> <span class="o">=</span> <span class="n">getFT</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">xval</span> <span class="p">,</span><span class="n">df</span><span class="p">,</span> <span class="n">samplingFrequency</span><span class="p">)</span>
+    <span class="n">yf</span><span class="p">,</span> <span class="n">yfT</span> <span class="o">=</span> <span class="n">getFT</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">yval</span> <span class="p">,</span><span class="n">df</span><span class="p">,</span> <span class="n">samplingFrequency</span><span class="p">)</span>
+    <span class="n">zf</span><span class="p">,</span> <span class="n">zfT</span> <span class="o">=</span> <span class="n">getFT</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">zval</span> <span class="p">,</span><span class="n">df</span><span class="p">,</span> <span class="n">samplingFrequency</span><span class="p">)</span>
+    
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+    <span class="n">gs</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_gridspec</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+    <span class="n">axs</span> <span class="o">=</span> <span class="n">gs</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Fourier transform depicting the frequency components (</span><span class="si">{}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">title</span><span class="p">),</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xf</span><span class="p">,</span> <span class="nb">abs</span><span class="p">(</span><span class="n">xfT</span><span class="p">))</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="n">sname</span> <span class="o">+</span> <span class="n">xval</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">13</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">lims</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">lims</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">yf</span><span class="p">,</span> <span class="nb">abs</span><span class="p">(</span><span class="n">yfT</span><span class="p">))</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="n">sname</span> <span class="o">+</span> <span class="n">yval</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">13</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">lims</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">lims</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">zf</span><span class="p">,</span> <span class="nb">abs</span><span class="p">(</span><span class="n">zfT</span><span class="p">))</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="n">sname</span> <span class="o">+</span> <span class="n">zval</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">13</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">lims</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">lims</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Frequency&quot;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span> 
+    <span class="n">sep</span><span class="o">=</span><span class="mf">0.01</span>
+    <span class="n">cap</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;Fourier Transform of Accelerometer Data in $x,y,z$ direction&quot;</span>
+    <span class="n">txt</span><span class="o">=</span><span class="s2">&quot;Fig </span><span class="si">{}</span><span class="s2">: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">fig_num</span><span class="p">,</span> <span class="n">cap</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">sep</span><span class="p">,</span> <span class="n">txt</span><span class="p">,</span> <span class="n">wrap</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">horizontalalignment</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+   <span class="c1"># fig.tight_layout()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 
     </div>
@@ -15116,26 +15150,42 @@ Plan:</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[29]:</div>
+<div class="prompt input_prompt">In&nbsp;[152]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#analyzeData(&quot;time&quot;,&quot;X&quot;,df4,&quot;Accelaration in &quot;)</span>
-<span class="c1">#analyzeData(&quot;time&quot;,&quot;Y&quot;,df4,&quot;Accelaration in &quot;)</span>
-<span class="n">analyzeData</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">,</span><span class="s2">&quot;Z&quot;</span><span class="p">,</span><span class="n">df4</span><span class="p">,</span><span class="s2">&quot;Accelaration in &quot;</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[33]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df6</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;Accelerometer.csv&quot;</span><span class="p">)</span>
-<span class="n">df6</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">,</span><span class="s2">&quot;X&quot;</span><span class="p">,</span><span class="s2">&quot;Y&quot;</span><span class="p">,</span><span class="s2">&quot;Z&quot;</span><span class="p">]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">getFTofAwithActivities</span><span class="p">(</span><span class="n">time</span><span class="p">,</span><span class="n">xval</span><span class="p">,</span><span class="n">df</span><span class="p">,</span><span class="n">activities</span><span class="p">,</span> <span class="n">sname</span><span class="p">,</span> <span class="n">samplingFrequency</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">fig_num</span><span class="p">,</span> <span class="n">lims</span><span class="o">=</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span><span class="kc">None</span><span class="p">]):</span>
+    <span class="n">a1</span><span class="p">,</span> <span class="n">a2</span><span class="p">,</span> <span class="n">a3</span><span class="p">,</span> <span class="n">a4</span><span class="p">,</span> <span class="n">a5</span><span class="p">,</span> <span class="n">a6</span> <span class="o">=</span> <span class="n">activities</span>
+    <span class="n">df1</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;activity&quot;</span><span class="p">]</span><span class="o">==</span><span class="n">a1</span><span class="p">]</span>
+    <span class="n">df2</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;activity&quot;</span><span class="p">]</span><span class="o">==</span><span class="n">a2</span><span class="p">]</span>
+    <span class="n">df3</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;activity&quot;</span><span class="p">]</span><span class="o">==</span><span class="n">a3</span><span class="p">]</span>
+    <span class="n">df4</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;activity&quot;</span><span class="p">]</span><span class="o">==</span><span class="n">a4</span><span class="p">]</span>
+    <span class="n">df5</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;activity&quot;</span><span class="p">]</span><span class="o">==</span><span class="n">a5</span><span class="p">]</span>
+    <span class="n">df6</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;activity&quot;</span><span class="p">]</span><span class="o">==</span><span class="n">a6</span><span class="p">]</span>
+    <span class="n">xf1</span><span class="p">,</span> <span class="n">xf1T</span> <span class="o">=</span> <span class="n">getFT</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">xval</span> <span class="p">,</span><span class="n">df1</span><span class="p">,</span> <span class="n">samplingFrequency</span><span class="p">)</span>
+    <span class="n">xf2</span><span class="p">,</span> <span class="n">xf2T</span> <span class="o">=</span> <span class="n">getFT</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">xval</span> <span class="p">,</span><span class="n">df2</span><span class="p">,</span> <span class="n">samplingFrequency</span><span class="p">)</span>
+    <span class="n">xf3</span><span class="p">,</span> <span class="n">xf3T</span> <span class="o">=</span> <span class="n">getFT</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">xval</span> <span class="p">,</span><span class="n">df3</span><span class="p">,</span> <span class="n">samplingFrequency</span><span class="p">)</span>
+    <span class="n">xf4</span><span class="p">,</span> <span class="n">xf4T</span> <span class="o">=</span> <span class="n">getFT</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">xval</span> <span class="p">,</span><span class="n">df4</span><span class="p">,</span> <span class="n">samplingFrequency</span><span class="p">)</span>
+    <span class="n">xf5</span><span class="p">,</span> <span class="n">xf5T</span> <span class="o">=</span> <span class="n">getFT</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">xval</span> <span class="p">,</span><span class="n">df5</span><span class="p">,</span> <span class="n">samplingFrequency</span><span class="p">)</span>
+    <span class="n">xf6</span><span class="p">,</span> <span class="n">xf6T</span> <span class="o">=</span> <span class="n">getFT</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">xval</span> <span class="p">,</span><span class="n">df6</span><span class="p">,</span> <span class="n">samplingFrequency</span><span class="p">)</span>
+    
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Fourier transform depicting the frequency components (</span><span class="si">{}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">title</span><span class="p">),</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xf1</span><span class="p">,</span> <span class="nb">abs</span><span class="p">(</span><span class="n">xf1T</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="n">a1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xf2</span><span class="p">,</span> <span class="nb">abs</span><span class="p">(</span><span class="n">xf2T</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="n">a2</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xf3</span><span class="p">,</span> <span class="nb">abs</span><span class="p">(</span><span class="n">xf3T</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="n">a3</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xf4</span><span class="p">,</span> <span class="nb">abs</span><span class="p">(</span><span class="n">xf4T</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="n">a4</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xf5</span><span class="p">,</span> <span class="nb">abs</span><span class="p">(</span><span class="n">xf5T</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="n">a5</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xf6</span><span class="p">,</span> <span class="nb">abs</span><span class="p">(</span><span class="n">xf6T</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="n">a6</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="n">sname</span> <span class="o">+</span> <span class="n">xval</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">13</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="n">lims</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="n">lims</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Frequency&quot;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span> 
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">sep</span><span class="o">=</span><span class="mf">0.01</span>
+    <span class="n">cap</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;Fourier Transform of Accelerometer Data in </span><span class="si">{}</span><span class="s2"> direction&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">xval</span><span class="p">)</span>
+    <span class="n">txt</span><span class="o">=</span><span class="s2">&quot;Fig </span><span class="si">{}</span><span class="s2">: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">fig_num</span><span class="p">,</span> <span class="n">cap</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">sep</span><span class="p">,</span> <span class="n">txt</span><span class="p">,</span> <span class="n">wrap</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">horizontalalignment</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 
     </div>
@@ -15158,7 +15208,7 @@ Plan:</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In&nbsp;[153]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">sdf1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;sam_exp2_acc_1.csv&quot;</span><span class="p">)</span>
@@ -15180,7 +15230,7 @@ Plan:</p>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[14]:</div>
+    <div class="prompt output_prompt">Out[153]:</div>
 
 
 
@@ -15301,7 +15351,7 @@ Plan:</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="prompt input_prompt">In&nbsp;[155]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sdf</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">sdf</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$A_x$&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
@@ -15332,109 +15382,41 @@ Plan:</p>
 
 
 <div class="output_png output_subarea ">
+<img src="output_54_0.png"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[156]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">getFTofA</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">,[</span><span class="s2">&quot;ax&quot;</span><span class="p">,</span><span class="s2">&quot;ay&quot;</span><span class="p">,</span><span class="s2">&quot;az&quot;</span><span class="p">],</span> <span class="n">sdf</span><span class="p">,</span><span class="s2">&quot;Accelaration: &quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;Sam&quot;</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
 <img src="output_55_0.png"
->
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[30]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">analyzeData</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">,</span><span class="s2">&quot;ax&quot;</span><span class="p">,</span><span class="n">sdf</span><span class="p">,</span><span class="s2">&quot;Accelaration: &quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;Sam&quot;</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-
-
-<div class="output_png output_subarea ">
-<img src="output_56_0.png"
->
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[31]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">analyzeData</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">,</span><span class="s2">&quot;ay&quot;</span><span class="p">,</span><span class="n">sdf</span><span class="p">,</span><span class="s2">&quot;Accelaration: &quot;</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;Sam&quot;</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-
-
-<div class="output_png output_subarea ">
-<img src="output_57_0.png"
->
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[32]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">analyzeData</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">,</span><span class="s2">&quot;az&quot;</span><span class="p">,</span><span class="n">sdf</span><span class="p">,</span><span class="s2">&quot;Accelaration: &quot;</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;Sam&quot;</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-
-
-<div class="output_png output_subarea ">
-<img src="output_58_0.png"
 >
 </div>
 
@@ -15453,7 +15435,7 @@ Plan:</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[36]:</div>
+<div class="prompt input_prompt">In&nbsp;[157]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">sddf</span> <span class="o">=</span> <span class="n">sdf</span><span class="p">[</span><span class="n">sdf</span><span class="o">.</span><span class="n">time</span> <span class="o">&gt;</span> <span class="mi">5000</span><span class="p">]</span>
@@ -15470,7 +15452,7 @@ Plan:</p>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[36]:</div>
+    <div class="prompt output_prompt">Out[157]:</div>
 
 
 
@@ -15591,10 +15573,10 @@ Plan:</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[37]:</div>
+<div class="prompt input_prompt">In&nbsp;[158]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">analyzeData</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">,</span><span class="s2">&quot;ax&quot;</span><span class="p">,</span><span class="n">sddf</span><span class="p">,</span><span class="s2">&quot;Accelaration: &quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;Sam&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">getFTofA</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">,[</span><span class="s2">&quot;ax&quot;</span><span class="p">,</span><span class="s2">&quot;ay&quot;</span><span class="p">,</span><span class="s2">&quot;az&quot;</span><span class="p">],</span> <span class="n">sddf</span><span class="p">,</span><span class="s2">&quot;Accelaration: &quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;Sam&quot;</span><span class="p">,</span><span class="mi">13</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -15613,75 +15595,7 @@ Plan:</p>
 
 
 <div class="output_png output_subarea ">
-<img src="output_61_0.png"
->
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[38]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">analyzeData</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">,</span><span class="s2">&quot;ay&quot;</span><span class="p">,</span><span class="n">sddf</span><span class="p">,</span><span class="s2">&quot;Accelaration: &quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;Sam&quot;</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-
-
-<div class="output_png output_subarea ">
-<img src="output_62_0.png"
->
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[39]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">analyzeData</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">,</span><span class="s2">&quot;az&quot;</span><span class="p">,</span><span class="n">sddf</span><span class="p">,</span><span class="s2">&quot;Accelaration: &quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;Sam&quot;</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-
-
-<div class="output_png output_subarea ">
-<img src="output_63_0.png"
+<img src="output_58_0.png"
 >
 </div>
 
@@ -15706,7 +15620,7 @@ Plan:</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[24]:</div>
+<div class="prompt input_prompt">In&nbsp;[159]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">mdf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;sensorlog_accel_exp_2.csv&quot;</span><span class="p">)</span>
@@ -15724,7 +15638,7 @@ Plan:</p>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[24]:</div>
+    <div class="prompt output_prompt">Out[159]:</div>
 
 
 
@@ -15845,7 +15759,7 @@ Plan:</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[25]:</div>
+<div class="prompt input_prompt">In&nbsp;[160]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">mdf</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">mdf</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$A_x$&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
@@ -15856,7 +15770,7 @@ Plan:</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Time (s)&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">getCaption</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;Accelaration Data in $x,y,z$ direction from Mohammad&quot;</span><span class="p">)</span>
+<span class="n">getCaption</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;Accelaration Data in $x,y,z$ direction from Mohammad&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 
@@ -15876,7 +15790,7 @@ Plan:</p>
 
 
 <div class="output_png output_subarea ">
-<img src="output_66_0.png"
+<img src="output_61_0.png"
 >
 </div>
 
@@ -15888,10 +15802,10 @@ Plan:</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[33]:</div>
+<div class="prompt input_prompt">In&nbsp;[161]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">analyzeData</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">,</span><span class="s2">&quot;ax&quot;</span><span class="p">,</span><span class="n">mdf</span><span class="p">,</span><span class="s2">&quot;Accelaration: &quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;Mohammad&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">getFTofA</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">,[</span><span class="s2">&quot;ax&quot;</span><span class="p">,</span><span class="s2">&quot;ay&quot;</span><span class="p">,</span><span class="s2">&quot;az&quot;</span><span class="p">],</span> <span class="n">mdf</span><span class="p">,</span><span class="s2">&quot;Accelaration: &quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;Mohammad&quot;</span><span class="p">,</span><span class="mi">15</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -15910,8 +15824,219 @@ Plan:</p>
 
 
 <div class="output_png output_subarea ">
-<img src="output_67_0.png"
+<img src="output_62_0.png"
 >
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Since, the data sets were quite rough. We planned on taking another data run where Mohammad and Sam would be doing similar activities - <em>walking</em>,<em>jogging/running</em>,<em>chores</em>, <em>sitting</em>, and <em>laying</em>.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Raw-Data-Set-From-Sam">Raw Data Set From Sam<a class="anchor-link" href="#Raw-Data-Set-From-Sam">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Sam recored data in the following order in $5$ minute blocks.</p>
+<ul>
+<li>jogging (2.46m/s)</li>
+<li>walking</li>
+<li>stairmaster(45 spm)</li>
+<li>chores</li>
+<li>sitting</li>
+<li>lay</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[162]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">activities</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;jog&quot;</span><span class="p">,</span><span class="s2">&quot;walk&quot;</span><span class="p">,</span><span class="s2">&quot;stairs&quot;</span><span class="p">,</span><span class="s2">&quot;chores&quot;</span><span class="p">,</span><span class="s2">&quot;sit&quot;</span><span class="p">,</span><span class="s2">&quot;lay&quot;</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">tagActvities</span><span class="p">(</span><span class="n">rep_num</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">activities</span>
+    <span class="n">act</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">activities</span><span class="p">)):</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">while</span> <span class="n">i</span> <span class="o">!=</span> <span class="n">rep_num</span><span class="p">:</span>
+            <span class="n">act</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">activities</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+            <span class="n">i</span> <span class="o">+=</span><span class="mi">1</span>
+    <span class="k">return</span> <span class="n">act</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[163]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sdf1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;exp2_data/Accelerometer_a.csv&quot;</span><span class="p">)</span>
+<span class="n">sdf1</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">,</span><span class="s2">&quot;ax&quot;</span><span class="p">,</span><span class="s2">&quot;ay&quot;</span><span class="p">,</span><span class="s2">&quot;az&quot;</span><span class="p">]</span>
+<span class="n">sdf2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;exp2_data/Accelerometer_b.csv&quot;</span><span class="p">)</span>
+<span class="n">sdf2</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">,</span><span class="s2">&quot;ax&quot;</span><span class="p">,</span><span class="s2">&quot;ay&quot;</span><span class="p">,</span><span class="s2">&quot;az&quot;</span><span class="p">]</span>
+<span class="n">sdf2</span><span class="o">.</span><span class="n">time</span> <span class="o">=</span> <span class="n">sdf2</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">values</span> <span class="o">+</span> <span class="n">sdf1</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">sdf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">sdf1</span><span class="p">,</span> <span class="n">sdf2</span><span class="p">],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sdf</span> <span class="o">=</span> <span class="n">sdf</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="o">-</span><span class="mi">5</span><span class="p">]</span> <span class="c1"># multiple of 6</span>
+<span class="n">sdf</span><span class="p">[</span><span class="s2">&quot;activity&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tagActvities</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">sdf</span><span class="o">.</span><span class="n">index</span><span class="p">)</span><span class="o">/</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">sdf</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[163]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>time</th>
+      <th>ax</th>
+      <th>ay</th>
+      <th>az</th>
+      <th>activity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.000000</td>
+      <td>-4.558770</td>
+      <td>13.991255</td>
+      <td>10.623259</td>
+      <td>jog</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.100952</td>
+      <td>-2.477199</td>
+      <td>12.424763</td>
+      <td>5.951324</td>
+      <td>jog</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.201873</td>
+      <td>0.396675</td>
+      <td>5.089117</td>
+      <td>3.673960</td>
+      <td>jog</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.302825</td>
+      <td>0.997975</td>
+      <td>2.584076</td>
+      <td>2.921026</td>
+      <td>jog</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.403747</td>
+      <td>-0.380359</td>
+      <td>18.807041</td>
+      <td>14.124328</td>
+      <td>jog</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>19459</th>
+      <td>1961.061473</td>
+      <td>-0.077389</td>
+      <td>-0.029788</td>
+      <td>9.814191</td>
+      <td>lay</td>
+    </tr>
+    <tr>
+      <th>19460</th>
+      <td>1961.162395</td>
+      <td>-0.059576</td>
+      <td>-0.024848</td>
+      <td>9.806258</td>
+      <td>lay</td>
+    </tr>
+    <tr>
+      <th>19461</th>
+      <td>1961.263286</td>
+      <td>-0.073647</td>
+      <td>-0.028441</td>
+      <td>9.772278</td>
+      <td>lay</td>
+    </tr>
+    <tr>
+      <th>19462</th>
+      <td>1961.364208</td>
+      <td>-0.086819</td>
+      <td>-0.016466</td>
+      <td>9.802216</td>
+      <td>lay</td>
+    </tr>
+    <tr>
+      <th>19463</th>
+      <td>1961.465129</td>
+      <td>-0.072000</td>
+      <td>-0.029040</td>
+      <td>9.803563</td>
+      <td>lay</td>
+    </tr>
+  </tbody>
+</table>
+<p>19464 rows × 5 columns</p>
+</div>
 </div>
 
 </div>
@@ -15922,10 +16047,19 @@ Plan:</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[34]:</div>
+<div class="prompt input_prompt">In&nbsp;[164]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">analyzeData</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">,</span><span class="s2">&quot;ay&quot;</span><span class="p">,</span><span class="n">mdf</span><span class="p">,</span><span class="s2">&quot;Accelaration: &quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;Mohammad&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sdf</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">values</span><span class="o">/</span><span class="mi">60</span><span class="p">,</span> <span class="n">sdf</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$A_x$&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sdf</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">values</span><span class="o">/</span><span class="mi">60</span><span class="p">,</span> <span class="n">sdf</span><span class="o">.</span><span class="n">ay</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$A_y$&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sdf</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">values</span><span class="o">/</span><span class="mi">60</span><span class="p">,</span> <span class="n">sdf</span><span class="o">.</span><span class="n">az</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$A_z$&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Acceleration Data&quot;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Acceleration (m/s^2)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Time (min)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">getCaption</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;Accelaration Data in $x,y,z$ direction from Sam&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 
     </div>
@@ -15956,10 +16090,10 @@ Plan:</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[35]:</div>
+<div class="prompt input_prompt">In&nbsp;[165]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">analyzeData</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">,</span><span class="s2">&quot;az&quot;</span><span class="p">,</span><span class="n">mdf</span><span class="p">,</span><span class="s2">&quot;Accelaration: &quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;Mohammad&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">getFTofA</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">,[</span><span class="s2">&quot;ax&quot;</span><span class="p">,</span><span class="s2">&quot;ay&quot;</span><span class="p">,</span><span class="s2">&quot;az&quot;</span><span class="p">],</span> <span class="n">sdf</span><span class="p">,</span><span class="s2">&quot;Accelaration: &quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;Sam&quot;</span><span class="p">,</span><span class="mi">17</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -15991,7 +16125,514 @@ Plan:</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Conclusion-&amp;-Summary">Conclusion &amp; Summary<a class="anchor-link" href="#Conclusion-&amp;-Summary">&#182;</a></h1><p><span style="color:red"></p>
+<h3 id="Looking-at-the-power-spectrum-for-particular-activities">Looking at the power spectrum for particular activities<a class="anchor-link" href="#Looking-at-the-power-spectrum-for-particular-activities">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[166]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">getFTofAwithActivities</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">,</span><span class="s2">&quot;ax&quot;</span><span class="p">,</span> <span class="n">sdf</span><span class="p">,</span> <span class="n">activities</span><span class="p">,</span><span class="s2">&quot;Accelaration: &quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;(Sam)&quot;</span><span class="p">,</span><span class="mi">18</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="output_71_0.png"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[167]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">getFTofAwithActivities</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">,</span><span class="s2">&quot;ay&quot;</span><span class="p">,</span> <span class="n">sdf</span><span class="p">,</span> <span class="n">activities</span><span class="p">,</span><span class="s2">&quot;Accelaration: &quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;(Sam)&quot;</span><span class="p">,</span><span class="mi">19</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="output_72_0.png"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[168]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">getFTofAwithActivities</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">,</span><span class="s2">&quot;az&quot;</span><span class="p">,</span> <span class="n">sdf</span><span class="p">,</span> <span class="n">activities</span><span class="p">,</span><span class="s2">&quot;Accelaration: &quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;(Sam)&quot;</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="output_73_0.png"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Redoing the analysis after filtering the gravitational data.</p>
+<h3 id="Dynamic-Body-Data-Analysis">Dynamic Body Data Analysis<a class="anchor-link" href="#Dynamic-Body-Data-Analysis">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[175]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">sdf</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">values</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">sdf</span><span class="o">.</span><span class="n">ay</span><span class="o">.</span><span class="n">values</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">sdf</span><span class="o">.</span><span class="n">az</span><span class="o">.</span><span class="n">values</span>
+
+<span class="n">sample_rate</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">cutoff_frequency</span> <span class="o">=</span> <span class="mf">0.1</span> 
+<span class="n">signal_lenght</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">sdf</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+
+<span class="n">A_DCx</span><span class="p">,</span> <span class="n">diff_x</span> <span class="o">=</span> <span class="n">getFilteredData</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">cutoff_frequency</span><span class="p">,</span> <span class="n">sample_rate</span><span class="p">)</span>
+<span class="n">A_DCy</span><span class="p">,</span> <span class="n">diff_y</span> <span class="o">=</span> <span class="n">getFilteredData</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">cutoff_frequency</span><span class="p">,</span> <span class="n">sample_rate</span><span class="p">)</span>
+<span class="n">A_DCz</span><span class="p">,</span> <span class="n">diff_z</span> <span class="o">=</span> <span class="n">getFilteredData</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">cutoff_frequency</span><span class="p">,</span> <span class="n">sample_rate</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[176]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sdf_d</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="n">sdf_d</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sdf</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">values</span>
+<span class="n">sdf_d</span><span class="p">[</span><span class="s2">&quot;ax&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">diff_x</span>
+<span class="n">sdf_d</span><span class="p">[</span><span class="s2">&quot;ay&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">diff_y</span>
+<span class="n">sdf_d</span><span class="p">[</span><span class="s2">&quot;az&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">diff_z</span>
+<span class="n">sdf_d</span><span class="p">[</span><span class="s2">&quot;activity&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tagActvities</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">sdf_d</span><span class="o">.</span><span class="n">index</span><span class="p">)</span><span class="o">/</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">sdf_d</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[176]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>time</th>
+      <th>ax</th>
+      <th>ay</th>
+      <th>az</th>
+      <th>activity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.000000</td>
+      <td>-0.560618</td>
+      <td>0.944762</td>
+      <td>-0.897444</td>
+      <td>jog</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.100952</td>
+      <td>1.412253</td>
+      <td>-0.529077</td>
+      <td>-5.084101</td>
+      <td>jog</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.201873</td>
+      <td>4.176222</td>
+      <td>-7.770004</td>
+      <td>-6.879832</td>
+      <td>jog</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.302825</td>
+      <td>4.666611</td>
+      <td>-10.178475</td>
+      <td>-7.155530</td>
+      <td>jog</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.403747</td>
+      <td>3.176563</td>
+      <td>6.142691</td>
+      <td>4.519876</td>
+      <td>jog</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>19459</th>
+      <td>1961.061473</td>
+      <td>-0.004785</td>
+      <td>-0.008632</td>
+      <td>0.018720</td>
+      <td>lay</td>
+    </tr>
+    <tr>
+      <th>19460</th>
+      <td>1961.162395</td>
+      <td>0.013029</td>
+      <td>-0.003691</td>
+      <td>0.010783</td>
+      <td>lay</td>
+    </tr>
+    <tr>
+      <th>19461</th>
+      <td>1961.263286</td>
+      <td>-0.001041</td>
+      <td>-0.007283</td>
+      <td>-0.023199</td>
+      <td>lay</td>
+    </tr>
+    <tr>
+      <th>19462</th>
+      <td>1961.364208</td>
+      <td>-0.014212</td>
+      <td>0.004693</td>
+      <td>0.006736</td>
+      <td>lay</td>
+    </tr>
+    <tr>
+      <th>19463</th>
+      <td>1961.465129</td>
+      <td>0.000607</td>
+      <td>-0.007880</td>
+      <td>0.008081</td>
+      <td>lay</td>
+    </tr>
+  </tbody>
+</table>
+<p>19464 rows × 5 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[172]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sdf_d</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">values</span><span class="o">/</span><span class="mi">60</span><span class="p">,</span> <span class="n">sdf_d</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$A_x$&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sdf_d</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">values</span><span class="o">/</span><span class="mi">60</span><span class="p">,</span> <span class="n">sdf_d</span><span class="o">.</span><span class="n">ay</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$A_y$&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sdf_d</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">values</span><span class="o">/</span><span class="mi">60</span><span class="p">,</span> <span class="n">sdf_d</span><span class="o">.</span><span class="n">az</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$A_z$&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Acceleration Data&quot;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Acceleration (m/s^2)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Time (min)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">getCaption</span><span class="p">(</span><span class="mi">21</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;Accelaration Data in $x,y,z$ direction from Sam (No Gravity)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="output_77_0.png"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[177]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">getFTofA</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">,[</span><span class="s2">&quot;ax&quot;</span><span class="p">,</span><span class="s2">&quot;ay&quot;</span><span class="p">,</span><span class="s2">&quot;az&quot;</span><span class="p">],</span> <span class="n">sdf_d</span><span class="p">,</span><span class="s2">&quot;Accelaration: &quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;Sam&quot;</span><span class="p">,</span><span class="mi">22</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="output_78_0.png"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[178]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">getFTofAwithActivities</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">,</span><span class="s2">&quot;ax&quot;</span><span class="p">,</span> <span class="n">sdf_d</span><span class="p">,</span> <span class="n">activities</span><span class="p">,</span><span class="s2">&quot;Accelaration: &quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;(Sam)&quot;</span><span class="p">,</span><span class="mi">23</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="output_79_0.png"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[179]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">getFTofAwithActivities</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">,</span><span class="s2">&quot;ay&quot;</span><span class="p">,</span> <span class="n">sdf_d</span><span class="p">,</span> <span class="n">activities</span><span class="p">,</span><span class="s2">&quot;Accelaration: &quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;(Sam)&quot;</span><span class="p">,</span><span class="mi">24</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="output_80_0.png"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[180]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">getFTofAwithActivities</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">,</span><span class="s2">&quot;az&quot;</span><span class="p">,</span> <span class="n">sdf_d</span><span class="p">,</span> <span class="n">activities</span><span class="p">,</span><span class="s2">&quot;Accelaration: &quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;(Sam)&quot;</span><span class="p">,</span><span class="mi">25</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="output_81_0.png"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Data-Set-from-Mohammad">Data Set from Mohammad<a class="anchor-link" href="#Data-Set-from-Mohammad">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Need to do:</p>
+<ul>
+<li>repeat same for Mohammad</li>
+<li>comparison of Sam and Mohammad</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Conclusion-&amp;-Summary">Conclusion &amp; Summary<a class="anchor-link" href="#Conclusion-&amp;-Summary">&#182;</a></h1><p>correlations, power adjust data, eliminate lower freq data.</p>
+<p><span style="color:red"></p>
 <p>Plan:</p>
 <p>For the following experiments:</p>
 <ul>
@@ -16009,13 +16650,6 @@ Plan:</p>
 </ul>
 <p>&lt;/span&gt;</p>
 
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Project-Questions:">Project Questions:<a class="anchor-link" href="#Project-Questions:">&#182;</a></h1>
 </div>
 </div>
 </div>
